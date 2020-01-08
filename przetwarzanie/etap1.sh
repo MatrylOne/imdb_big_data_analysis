@@ -18,4 +18,4 @@ hive -e "CREATE TABLE IF NOT EXISTS etap1.title_ratings_years AS SELECT title_ra
 # ) a lateral view explode(a.directors) exploded as uniqueDirectors;
  
 # Title_crew z ominieciem atomizecrew
-"CREATE TABLE IF NOT EXISTS etap1.title_crew AS SELECT tconst, nconst, CASE category WHEN "director" THEN true ELSE false END as isDirector, CASE category WHEN "actor" THEN true ELSE false END as isActor FROM default.title_principals WHERE category = 'director' OR category = 'actor';"
+hive -e "CREATE TABLE IF NOT EXISTS etap1.title_crew AS SELECT tconst, nconst, CASE category WHEN "director" THEN true ELSE false END as isDirector, CASE category WHEN "actor" THEN true ELSE false END as isActor FROM default.title_principals WHERE category = 'director' OR category = 'actor';"
